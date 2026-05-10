@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GastroSmart - Responsive Testing Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #111;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .testing-guide {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #333;
+            margin: 20px 0 15px;
+            font-size: 1.5rem;
+            border-bottom: 3px solid #F59E0B;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #555;
+            margin: 15px 0 10px;
+            font-size: 1.1rem;
+        }
+
+        .device-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 4px solid #F59E0B;
+            border-radius: 4px;
+        }
+
+        .device-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .info-card {
+            background: white;
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .info-card strong {
+            color: #F59E0B;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .checklist {
+            list-style-position: inside;
+            margin: 10px 0;
+        }
+
+        .checklist li {
+            margin: 8px 0;
+            padding-left: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .tip {
+            background: #E0F2FE;
+            border-left: 4px solid #0284C7;
+            padding: 12px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-size: 0.95rem;
+        }
+
+        .warning {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 12px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-size: 0.95rem;
+        }
+
+        .device-size-reference {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .size-box {
+            background: white;
+            border: 2px solid #F59E0B;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .size-box .px {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #F59E0B;
+        }
+
+        .size-box .name {
+            color: #666;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .browser-dev-tools {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            margin: 10px 0;
+        }
+
+        code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        .critical {
+            font-weight: bold;
+            color: #EF4444;
+        }
+
+        .success {
+            font-weight: bold;
+            color: #10B981;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table th {
+            background: #F59E0B;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:hover {
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>📱 GastroSmart Responsive Testing Guide</h1>
+
+        <div class="testing-guide">
+            <h2>Bagaimana Cara Testing Responsive Design?</h2>
+
+            <h3>Metode 1: Browser DevTools (Recommended)</h3>
+            <ol class="checklist">
+                <li>Buka aplikasi di Chrome/Firefox</li>
+                <li>Tekan <code>F12</code> atau <code>Ctrl+Shift+I</code> untuk buka DevTools</li>
+                <li>Tekan <code>Ctrl+Shift+M</code> untuk Toggle Mobile View</li>
+                <li>Pilih device dari dropdown atau ubah ukuran secara manual</li>
+                <li>Refresh halaman (Ctrl+R) untuk lihat responsive design</li>
+            </ol>
+
+            <div class="tip">
+                💡 <strong>Tips:</strong> Gunakan throttling di DevTools untuk simulasi koneksi mobile yang lambat
+                (Network → Slow 3G)
+            </div>
+        </div>
+
+        <div class="testing-guide">
+            <h2>Ukuran Device dan Media Query Breakpoints</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Breakpoint</th>
+                        <th>Ukuran Layar</th>
+                        <th>Device Contoh</th>
+                        <th>Perubahan Utama</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&lt; 375px</td>
+                        <td>Very Small</td>
+                        <td>Old iPhones (SE Gen 1)</td>
+                        <td>Minimal spacing, small fonts</td>
+                    </tr>
+                    <tr>
+                        <td>375px - 480px</td>
+                        <td>Small Phone</td>
+                        <td>iPhone SE, 12 mini</td>
+                        <td>Single column, compact layout</td>
+                    </tr>
+                    <tr>
+                        <td>480px - 600px</td>
+                        <td>Phone</td>
+                        <td>iPhone 12, Pixel 5</td>
+                        <td>Forms optimized, better spacing</td>
+                    </tr>
+                    <tr>
+                        <td>600px - 768px</td>
+                        <td>Large Phone</td>
+                        <td>iPhone 12 Pro Max, Pixel 6</td>
+                        <td>Readability improved</td>
+                    </tr>
+                    <tr>
+                        <td>768px - 900px</td>
+                        <td>Tablet</td>
+                        <td>iPad Mini, Android Tablet</td>
+                        <td>2-column layout, sidebar hide</td>
+                    </tr>
+                    <tr>
+                        <td>&gt; 900px</td>
+                        <td>Desktop</td>
+                        <td>Laptops, Desktops</td>
+                        <td>Full layout, sidebar visible</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="device-size-reference">
+                <div class="size-box">
+                    <div class="px">375px</div>
+                    <div class="name">Very Small Phone</div>
+                </div>
+                <div class="size-box">
+                    <div class="px">480px</div>
+                    <div class="name">Small Phone</div>
+                </div>
+                <div class="size-box">
+                    <div class="px">600px</div>
+                    <div class="name">Phone</div>
+                </div>
+                <div class="size-box">
+                    <div class="px">768px</div>
+                    <div class="name">Tablet</div>
+                </div>
+                <div class="size-box">
+                    <div class="px">900px</div>
+                    <div class="name">Desktop Start</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="testing-guide">
+            <h2>Testing Checklist per Breakpoint</h2>
+
+            <h3>Very Small Phone (375px)</h3>
+            <div class="device-section">
+                <ul class="checklist">
+                    <li><input type="checkbox"> Buttons terlihat besar dan mudah diklik (min 44px)</li>
+                    <li><input type="checkbox"> Text tidak kecil (<10px)< /li>
+                    <li><input type="checkbox"> Form input tidak auto-zoom saat focus</li>
+                    <li><input type="checkbox"> Sidebar tersembunyi (hamburger menu aktif)</li>
+                    <li><input type="checkbox"> Konten tidak overflow horizontal</li>
+                </ul>
+            </div>
+
+            <h3>Small Phone (480px)</h3>
+            <div class="device-section">
+                <ul class="checklist">
+                    <li><input type="checkbox"> Hero title ukuran 1.1rem atau lebih besar</li>
+                    <li><input type="checkbox"> Stats grid single column</li>
+                    <li><input type="checkbox"> Admin form labels terlihat jelas</li>
+                    <li><input type="checkbox"> Input fields padding cukup (min 10px)</li>
+                    <li><input type="checkbox"> Buttons terlihat dengan jarak (~6px padding)</li>
+                    <li><input type="checkbox"> Tables horizontal scroll berfungsi</li>
+                </ul>
+            </div>
+
+            <h3>Phone (600px)</h3>
+            <div class="device-section">
+                <ul class="checklist">
+                    <li><input type="checkbox"> Section titles ukuran 1rem</li>
+                    <li><input type="checkbox"> Cards padding 14px cukup</li>
+                    <li><input type="checkbox"> Status pills tidak dipotong (max 150px)</li>
+                    <li><input type="checkbox"> Modal dialog width 95vw dan terlihat</li>
+                    <li><input type="checkbox"> Navigation tabs bisa di-scroll</li>
+                    <li><input type="checkbox"> Font size form label 0.72rem readable</li>
+                </ul>
+            </div>
+
+            <h3>Large Phone (760px)</h3>
+            <div class="device-section">
+                <ul class="checklist">
+                    <li><input type="checkbox"> Breadcrumb tidak overflow</li>
+                    <li><input type="checkbox"> Modal max-width 90vw berfungsi</li>
+                    <li><input type="checkbox"> Import hint text readable</li>
+                    <li><input type="checkbox"> Topbar tidak crowded</li>
+                </ul>
+            </div>
+
+            <h3>Tablet (768px - 900px)</h3>
+            <div class="device-section">
+                <ul class="checklist">
+                    <li><input type="checkbox"> Grid layouts semi-responsive (mulai 2 kolom)</li>
+                    <li><input type="checkbox"> Topbar height adaptive</li>
+                    <li><input type="checkbox"> Font size 15px untuk body</li>
+                    <li><input type="checkbox"> Sidebar overlay toggle bekerja</li>
+                    <li><input type="checkbox"> Formula steps readable</li>
+                    <li><input type="checkbox"> Modal box max-width 90vw</li>
+                </ul>
+            </div>
+
+            <h3>Desktop (900px+)</h3>
+            <div class="device-section">
+                <ul class="checklist">
+                    <li><input type="checkbox"> Sidebar always visible 260px</li>
+                    <li><input type="checkbox"> Main content margin-left correct</li>
+                    <li><input type="checkbox"> Grid-2, Grid-3 layouts full width</li>
+                    <li><input type="checkbox"> Topbar full width dengan padding 24px</li>
+                    <li><input type="checkbox"> No overflow atau horizontal scroll</li>
+                    <li><input type="checkbox"> Menu button tersembunyi</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="testing-guide">
+            <h2>Specific Features Testing</h2>
+
+            <h3>Form Inputs</h3>
+            <div class="device-section">
+                <div class="warning">
+                    ⚠️ <strong>Critical:</strong> Form inputs harus 16px font size untuk mencegah auto-zoom di iOS
+                </div>
+                <ul class="checklist">
+                    <li><input type="checkbox"> Input field tidak auto-zoom saat di-tap di iOS</li>
+                    <li><input type="checkbox"> Focus border (gold) terlihat jelas</li>
+                    <li><input type="checkbox"> Keyboard tidak menutupi form field</li>
+                    <li><input type="checkbox"> Placeholder text readable</li>
+                </ul>
+            </div>
+
+            <h3>Navigation</h3>
+            <div class="device-section">
+                <ul class="checklist">
+                    <li><input type="checkbox"> Hamburger menu (768px ke bawah) berfungsi</li>
+                    <li><input type="checkbox"> Sidebar overlay muncul dengan smooth animation</li>
+                    <li><input type="checkbox"> Sidebar overlay dapat ditutup dengan tap di luar</li>
+                    <li><input type="checkbox"> Active nav item highlight jelas</li>
+                </ul>
+            </div>
+
+            <h3>Tables & Lists</h3>
+            <div class="device-section">
+                <ul class="checklist">
+                    <li><input type="checkbox"> Tables horizontal scroll pada mobile</li>
+                    <li><input type="checkbox"> Column headers tetap visible</li>
+                    <li><input type="checkbox"> Status badges tidak dipotong</li>
+                    <li><input type="checkbox"> Action buttons tetap accessible</li>
+                </ul>
+            </div>
+
+            <h3>Modals & Dialogs</h3>
+            <div class="device-section">
+                <ul class="checklist">
+                    <li><input type="checkbox"> Modal backdrop visible dengan blur</li>
+                    <li><input type="checkbox"> Modal box tidak exceed viewport height</li>
+                    <li><input type="checkbox"> Close button (X) mudah di-tap</li>
+                    <li><input type="checkbox"> Modal scrollable jika content overflow</li>
+                    <li><input type="checkbox"> Modal tidak terpotong di samping</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="testing-guide">
+            <h2>Performance & Accessibility Testing</h2>
+
+            <h3>Touch Targets (WCAG 2.1 Level AAA)</h3>
+            <div class="device-section">
+                <ul class="checklist">
+                    <li><input type="checkbox"> Semua buttons minimum 44x44px</li>
+                    <li><input type="checkbox"> Links dan clickable elements 44x44px+</li>
+                    <li><input type="checkbox"> Spacing antar buttons cukup (min 8px)</li>
+                </ul>
+            </div>
+
+            <h3>Keyboard Navigation</h3>
+            <div class="device-section">
+                <ul class="checklist">
+                    <li><input type="checkbox"> Tab key navigasi antar form fields</li>
+                    <li><input type="checkbox"> Focus outline visible (gold border)</li>
+                    <li><input type="checkbox"> Enter key submit form</li>
+                </ul>
+            </div>
+
+            <h3>Performance</h3>
+            <div class="device-section">
+                <ul class="checklist">
+                    <li><input type="checkbox"> DevTools: Lighthouse score bagus (>80)</li>
+                    <li><input type="checkbox"> No layout shift saat layout berubah breakpoint</li>
+                    <li><input type="checkbox"> Smooth scroll behavior</li>
+                    <li><input type="checkbox"> Transitions smooth (0.3s)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="testing-guide">
+            <h2>Developer Tools Shortcuts</h2>
+
+            <h3>Chrome DevTools</h3>
+            <div class="browser-dev-tools">
+                F12 atau Ctrl+Shift+I → Buka DevTools<br>
+                Ctrl+Shift+M → Toggle Device Toolbar<br>
+                Ctrl+Shift+P → Command Palette (device simulator)<br>
+                F5 → Refresh halaman<br>
+                Ctrl+Shift+Delete → Delete Cache & Hard Refresh<br>
+            </div>
+
+            <h3>Firefox DevTools</h3>
+            <div class="browser-dev-tools">
+                F12 atau Ctrl+Shift+I → Buka DevTools<br>
+                Ctrl+Shift+M → Toggle Responsive Design Mode<br>
+                Ctrl+Shift+R → Hard Refresh<br>
+            </div>
+
+            <h3>Safari (MacOS)</h3>
+            <div class="browser-dev-tools">
+                Cmd+Option+I → Buka DevTools<br>
+                Cmd+Option+U → Responsive Design Mode<br>
+                Cmd+R → Refresh halaman<br>
+            </div>
+        </div>
+
+        <div class="testing-guide">
+            <h2>Common Mobile Issues & Solutions</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Issue</th>
+                        <th>Symptoms</th>
+                        <th>Solution</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Auto-zoom on input focus</td>
+                        <td>Form field zoom saat di-tap (iOS)</td>
+                        <td>Font size ≥ 16px pada input</td>
+                    </tr>
+                    <tr>
+                        <td>Horizontal scroll</td>
+                        <td>Konten overflow ke kanan</td>
+                        <td>Check max-width, overflow hidden</td>
+                    </tr>
+                    <tr>
+                        <td>Touch target kecil</td>
+                        <td>Sulit tap button di mobile</td>
+                        <td>Min 44x44px touch target</td>
+                    </tr>
+                    <tr>
+                        <td>Text terlalu kecil</td>
+                        <td>Font size < 16px sulit dibaca</td>
+                        <td>Gunakan relative sizing (rem)</td>
+                    </tr>
+                    <tr>
+                        <td>Layout shift</td>
+                        <td>Konten bergerak saat scroll</td>
+                        <td>Reserve space untuk sidebar</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="testing-guide">
+            <h2>Actual Device Testing</h2>
+
+            <h3>Testing di Real Mobile Devices</h3>
+            <div class="tip">
+                💡 <strong>Best Practice:</strong> Selalu test di real devices jika memungkinkan, terutama:
+            </div>
+
+            <ul class="checklist">
+                <li><input type="checkbox"> iOS Safari (iPhone)</li>
+                <li><input type="checkbox"> Chrome Mobile (Android)</li>
+                <li><input type="checkbox"> Tablets (iPad, Samsung Tab)</li>
+                <li><input type="checkbox"> Low-end devices (older phones)</li>
+            </ul>
+
+            <h3>Using Android Emulator</h3>
+            <div class="browser-dev-tools">
+                1. Download Android Studio<br>
+                2. Open Android Virtual Device Manager<br>
+                3. Create/run emulator with desired resolution<br>
+                4. Open Chrome in emulator → navigate to localhost:port<br>
+            </div>
+
+            <h3>Using iOS Simulator (macOS)</h3>
+            <div class="browser-dev-tools">
+                1. Open Xcode → Devices and Simulators<br>
+                2. Create new simulator (iPhone 12, 13, etc)<br>
+                3. Run simulator<br>
+                4. Open Safari → navigate to localhost:port<br>
+            </div>
+        </div>
+
+        <div class="testing-guide" style="background: #F0FDF4; border-left: 4px solid #10B981;">
+            <h2>✓ Testing Complete Checklist</h2>
+
+            <ul class="checklist">
+                <li><input type="checkbox"> Tested pada 375px (very small)</li>
+                <li><input type="checkbox"> Tested pada 480px (small phone)</li>
+                <li><input type="checkbox"> Tested pada 600px (phone)</li>
+                <li><input type="checkbox"> Tested pada 768px (tablet)</li>
+                <li><input type="checkbox"> Tested pada 900px+ (desktop)</li>
+                <li><input type="checkbox"> Form inputs tidak auto-zoom</li>
+                <li><input type="checkbox"> Buttons 44x44px+ touch target</li>
+                <li><input type="checkbox"> Hamburger menu berfungsi</li>
+                <li><input type="checkbox"> Tables scrollable horizontally</li>
+                <li><input type="checkbox"> Modals fit pada viewport</li>
+                <li><input type="checkbox"> No horizontal overflow</li>
+                <li><input type="checkbox"> Keyboard navigation working</li>
+                <li><input type="checkbox"> Lighthouse score > 80</li>
+                <li><input type="checkbox"> Real device testing complete</li>
+            </ul>
+
+            <div class="success" style="margin-top: 20px; padding: 15px; background: white; border-radius: 4px;">
+                ✓ Selamat! Aplikasi Anda sudah mobile responsive dan siap untuk production!
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
