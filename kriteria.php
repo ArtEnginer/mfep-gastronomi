@@ -55,15 +55,27 @@ $totalBobot = array_sum(array_column($KRITERIA, 'bobot'));
         <div class="chart-container" style="height:240px;">
             <canvas id="chartBobot"></canvas>
         </div>
+        <?php
+        // Prepare chart arrays to avoid PHP interpolation issues and ensure valid JSON
+        $chart_labels = [];
+        $chart_data = [];
+        $chart_colors = [];
+        foreach ($KRITERIA as $kode => $k) {
+            $chart_labels[] = $kode . ': ' . $k['nama'];
+            $chart_data[] = $k['bobot'] * 100;
+            $chart_colors[] = $k['warna'];
+        }
+        ?>
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                new Chart(document.getElementById('chartBobot'), {
+                const ctx = document.getElementById('chartBobot').getContext('2d');
+                new Chart(ctx, {
                     type: 'pie',
                     data: {
-                        labels: <?= json_encode(array_map(fn($k, $v) => "$k: $v[nama]", array_keys($KRITERIA), $KRITERIA)) ?>,
+                        labels: <?= json_encode($chart_labels) ?>,
                         datasets: [{
-                            data: <?= json_encode(array_map(fn($k) => $k['bobot'] * 100, $KRITERIA)) ?>,
-                            backgroundColor: <?= json_encode(array_map(fn($k) => $k['warna'], $KRITERIA)) ?>,
+                            data: <?= json_encode($chart_data) ?>,
+                            backgroundColor: <?= json_encode($chart_colors) ?>,
                             borderWidth: 2,
                             borderColor: '#131416',
                             hoverOffset: 8
@@ -86,7 +98,9 @@ $totalBobot = array_sum(array_column($KRITERIA, 'bobot'));
                             },
                             tooltip: {
                                 callbacks: {
-                                    label: ctx => ` ${ctx.label}: ${ctx.raw.toFixed(0)}%`
+                                    label: function(ctx) {
+                                        return ` ${ctx.label}: ${ctx.raw.toFixed(0)}%`;
+                                    }
                                 }
                             }
                         }

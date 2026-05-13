@@ -25,10 +25,10 @@ $top3 = array_slice($HASIL, 0, 3);
             di Kota Surakarta, mendukung pelestarian kuliner warisan budaya Jawa.
         </p>
         <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;">
-            <a href="pages/ranking.php" class="btn btn-primary">
+            <a href="ranking.php" class="btn btn-primary">
                 <i data-lucide="trophy"></i> Lihat Ranking
             </a>
-            <a href="pages/perhitungan.php" class="btn btn-outline">
+            <a href="perhitungan.php" class="btn btn-outline">
                 <i data-lucide="calculator"></i> Perhitungan MFEP
             </a>
         </div>
@@ -76,7 +76,7 @@ $top3 = array_slice($HASIL, 0, 3);
     <div class="card animate-in delay-2">
         <div class="card-header">
             <span class="card-title">🏆 Top 3 Destinasi Terbaik</span>
-            <a href="pages/ranking.php" class="btn btn-outline btn-sm">Semua <i data-lucide="arrow-right"></i></a>
+            <a href="ranking.php" class="btn btn-outline btn-sm">Semua <i data-lucide="arrow-right"></i></a>
         </div>
         <?php foreach ($top3 as $r): ?>
             <?php
